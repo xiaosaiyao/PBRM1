@@ -10,19 +10,19 @@ factors <- c("BRG1","RELA")
 for (factor in factors) {
 
     # Load samples
-    #samples <- read.csv("project213.BRG1.csv",stringsAsFactors=F)
-    #chipseq <- dba(sampleSheet=samples)
-    #chipseq <- dba.count(chipseq, filter=2)
+    samples <- read.csv("project213.BRG1.csv",stringsAsFactors=F)
+    chipseq <- dba(sampleSheet=samples)
+    chipseq <- dba.count(chipseq, filter=2)
 
     # Normalize background regions using csaw gives best differential
-    #chipseq <- dba.normalize(chipseq, 
-#			     library=DBA_LIBSIZE_BACKGROUND, 
-#			     method=DBA_ALL_METHODS,
-#			     normalize=DBA_NORM_NATIVE,
-#			     background=TRUE)
+    chipseq <- dba.normalize(chipseq, 
+			     library=DBA_LIBSIZE_BACKGROUND, 
+			     method=DBA_ALL_METHODS,
+			     normalize=DBA_NORM_NATIVE,
+			     background=TRUE)
 
     filename <- paste0("project213.", factor, ".chipseq.rds")
-#    saveRDS(chipseq, filename)
+    saveRDS(chipseq, filename)
     chipseq <- readRDS(filename)
     
     for (PBRM1_status in c("WT","KO")){
