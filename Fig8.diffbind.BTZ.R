@@ -1,6 +1,7 @@
-library(DiffBind)
-library(GenomicRanges)
-library(rtracklayer)
+#R4.2.0
+library(DiffBind) #3.6.1
+library(GenomicRanges) #1.48.0
+library(rtracklayer) #1.56.1
 
 cwd <- "/scratch/users/astar/gis/yaoxs/PBRM1/chip/diffbind"
 setwd(cwd)
