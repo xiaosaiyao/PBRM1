@@ -1,15 +1,3 @@
-#!/bin/sh
-#$ -N prom_enhancer
-#$ -q long.q
-#$ -j y
-#$ -S /bin/sh
-#$ -cwd
-#$ -l h_rt=10:00:00,h_vmem=40G
-#$ -pe OpenMP 1
-#$ -M yaoxs@gis.a-star.edu.sg
-#$ -m abes
-#$ -v PATH
-
 #A promoter region is defined as H3K27ac positive, H3K4me3 positive and within 2.5kb +/- TSS where TSS - GENCODE transcripts
 #A enhancer region is defined as H3K27ac positive, H3K4me1 positive and non-overlapping with promoter 
 
