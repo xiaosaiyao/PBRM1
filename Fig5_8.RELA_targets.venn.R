@@ -3,7 +3,7 @@ library(chipenrich)
 library(eulerr)
 library(ggplot2)
 
-dir = "/Users/abc/Desktop/ASTAR/Projects/PBRM1/Analysis/RNAseq/RSEM/"
+dir <- "/Users/abc/Desktop/ASTAR/Projects/PBRM1/Analysis/RNAseq/RSEM/"
 setwd(dir)
 
 ################## 786-O parental ##################
@@ -82,7 +82,7 @@ length(RELA_KO_expression_chip)
 
 # Plot Venn diagrams
 pdf("PBRM1_KO_venn.pdf")
-RELA_KO_euler = eulerr::euler(combinations = list(
+RELA_KO_euler <- eulerr::euler(combinations = list(
   RELA_KO = RELA_KO_expression_chip,
   PBRM1_KO_down = PBRM1_KO_expression_down,
   PBRM1_KO_up = PBRM1_KO_expression_up
