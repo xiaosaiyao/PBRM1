@@ -123,11 +123,6 @@ RELA_KO_BTZ_euler <- eulerr::euler(combinations = list(
 plot(RELA_KO_BTZ_euler, quantities = list(type = c("percent", "counts")))
 dev.off()
 
-gene_127=intersect(PBRM1_KO_expression_up,unique(BTZ_expression_down))[!intersect(PBRM1_KO_expression_up,unique(BTZ_expression_down)) %in% RELA_KO_expression_chip]
-
-
-
-
 PBRM1_KO_BTZ_RELA <- intersect(PBRM1_RELA_KO_intersect, BTZ_expression_down)
 
 
