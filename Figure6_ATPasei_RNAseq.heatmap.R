@@ -35,10 +35,10 @@ res <- results(dds, contrast=c("design","KO_DMSO","KO_BRG1i"))
 nrow(dds)
 
 rld <- rlog(dds, blind=TRUE)
-rldMat<-assay(rld)
+rldMat <- assay(rld)
 
 #-----Annotation-------------------
-E2G<-read.delim2("GRCh37.p13.E2G.txt", row.names=1, header = FALSE, sep = "\t", quote = "\"", dec = ",", fill = TRUE, comment.char = "#", check.names=FALSE)
+E2G <- read.delim2("GRCh37.p13.E2G.txt", row.names=1, header = FALSE, sep = "\t", quote = "\"", dec = ",", fill = TRUE, comment.char = "#", check.names=FALSE)
 
 #-----Output Exp Levels-------------------
 resOrdered <- res[order(res$pvalue),]
