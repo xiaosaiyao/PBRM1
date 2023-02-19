@@ -3,7 +3,7 @@ library(chipenrich)
 library(eulerr)
 library(ggplot2)
 
-dir <- "/Users/abc/Desktop/ASTAR/Projects/PBRM1/Analysis/RNAseq/RSEM/"
+dir = "/Users/abc/Desktop/ASTAR/Projects/PBRM1/Analysis/RNAseq/RSEM/"
 setwd(dir)
 
 ################## 786-O parental ##################
@@ -82,7 +82,7 @@ length(RELA_KO_expression_chip)
 
 # Plot Venn diagrams
 pdf("PBRM1_KO_venn.pdf")
-RELA_KO_euler <- eulerr::euler(combinations = list(
+RELA_KO_euler = eulerr::euler(combinations = list(
   RELA_KO = RELA_KO_expression_chip,
   PBRM1_KO_down = PBRM1_KO_expression_down,
   PBRM1_KO_up = PBRM1_KO_expression_up
@@ -123,6 +123,31 @@ RELA_KO_BTZ_euler <- eulerr::euler(combinations = list(
 plot(RELA_KO_BTZ_euler, quantities = list(type = c("percent", "counts")))
 dev.off()
 
+gene_127=intersect(PBRM1_KO_expression_up,unique(BTZ_expression_down))[!intersect(PBRM1_KO_expression_up,unique(BTZ_expression_down)) %in% RELA_KO_expression_chip]
+
+
+
+
 PBRM1_KO_BTZ_RELA <- intersect(PBRM1_RELA_KO_intersect, BTZ_expression_down)
+
+
+### hypergeometric calculation
+# overlap between RELA targets and upregulated targets after PBRM1 KO
+q <- length(intersect(RELA_KO_expression_chip,PBRM1_KO_expression_up))-1
+m <- length(which(PBRM1_KO_expression_up %in%  RELA_KO_expression$GeneSymbol))
+n <- length(RELA_KO_expression$GeneSymbol) - m
+k <- length(RELA_KO_expression_chip)
+
+pval <- phyper(q,m,n,k,lower.tail = FALSE)
+#8.405412e-101
+
+# overlap between RELA targets and downregulated targets after BTZ treatment
+q <- length(intersect(RELA_KO_expression_chip,BTZ_expression_down))-1
+m <- length(which(BTZ_expression_down %in%  RELA_KO_expression$GeneSymbol))
+n <- length(RELA_KO_expression$GeneSymbol) - m
+k <- length(RELA_KO_expression_chip)
+
+pval <- phyper(q,m,n,k,lower.tail = FALSE)
+#3.74127e-55
 
 
